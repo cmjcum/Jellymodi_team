@@ -54,27 +54,27 @@ def change_pic_to_emoji():
     return jsonify({'url': jelly_url})
 
 
+
+
 @bp.route('/upload', methods=['POST'])
 def upload():
-    print('upload')
-    # desc = request.form['desc']
-    # print(request.files.getlist('face_img'))
-    # face_img = request.files.getlist('face_img')
 
-    # face_img = request.files[0]['face_img']
-    # print(face_img)
+    desc_receive = request.form['desc_give']
+    face_img_receive = request.form['face_img_give']
 
-    # timestamp = datetime.datetime.utcnow().strftime('%Y%m%d%H%M%S%f')
+    doc = {
+        'desc_receive': 'desc_receive',
+        'face_img_receive': 'face_img_receive'
+    }
+    db.users.insert_one(doc)
 
-    # path = './static/img/log' + timestamp + secure_filename(face_img.filename)
+    return jsonify({'msg': '저장 완료!'})
 
 
-    # face_img = request.files[0]['face_img']
-    # additional_img = request.files['additional_img']
 
-    # msg = classify_emotion(detection_face(face_img))
 
-    return jsonify({'msg': 'msg'})
+
+
 
 
 def detection_face(img_path):
