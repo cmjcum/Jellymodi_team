@@ -1,19 +1,13 @@
-from flask import Flask, Blueprint, render_template, request, jsonify, redirect, url_for, Blueprint, session
-import jinja2
-import jwt
-import datetime
-import hashlib
-import tensorflow as tf
-import cv2
-import numpy as np
-
-import os
-
+from flask import render_template, request, jsonify, redirect, url_for, Blueprint
 from werkzeug.utils import secure_filename
+import tensorflow as tf
+import numpy as np
 from skimage import io
 from skimage.transform import resize
-
-import random
+import jinja2
+import cv2
+import jwt
+import datetime, random, os
 
 os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3'
 

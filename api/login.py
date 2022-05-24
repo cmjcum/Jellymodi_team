@@ -1,4 +1,4 @@
-from flask import Flask, Blueprint, render_template, jsonify, request, session, redirect, url_for
+from flask import Blueprint, render_template, jsonify, request
 import jwt
 import datetime
 import hashlib
@@ -64,9 +64,6 @@ def api_valid():
     token_receive = request.cookies.get('mytoken')
     try:
         payload = jwt.decode(token_receive, SECRET_KEY, algorithms=['HS256'])
-        print(payload)
-
-        userinfo = db.user.find_one({'email': payload['email']}, {'_id': 0})
         return jsonify({'result': 'success'})
 
     except jwt.ExpiredSignatureError:

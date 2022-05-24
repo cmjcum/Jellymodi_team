@@ -1,8 +1,7 @@
-from flask import Flask, render_template, request, jsonify, redirect, url_for, Blueprint, session
+from flask import Flask, render_template, request, redirect, url_for
 import jinja2
 import jwt
 import datetime
-import hashlib
 
 from api import login, detail, post
 
@@ -22,7 +21,6 @@ def home():
     token_receive = request.cookies.get('mytoken')
     try:
         payload = jwt.decode(token_receive, SECRET_KEY, algorithms=['HS256'])
-        user_info = db.user.find_one({"email": payload['email']})
 
         posts = list(db.posts.find({"email": payload['email']}))
         for post in posts:
