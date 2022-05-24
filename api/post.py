@@ -22,7 +22,6 @@ from pymongo import MongoClient
 client = MongoClient('localhost', 27017)
 db = client.dbsparta
 
-
 bp = Blueprint('post', __name__, url_prefix='/post')
 
 model = tf.keras.models.load_model('static/emotionModel.h5')
