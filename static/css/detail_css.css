@@ -2,6 +2,14 @@
     font-family: 'hana';
     src: url('nanum_hana.ttf') format('truetype');
 }
+@font-face {
+    font-family: 'busstop';
+    src: url('HYbusstop.ttf') format('truetype');
+}
+
+* {
+    font-family: 'busstop';
+}
 
 body {
     background-color: #fcd19c;
@@ -26,6 +34,7 @@ body {
 
 #floating_edit_button {
     font-family: 'hana';
+    font-size: 1.5em;
     font-weight: bold;
 }
 
@@ -69,9 +78,8 @@ body {
 }
 
 .desc {
-    font-size: 2em;
+    font-size: 1.7em;
     padding: 0 10%;
-    font-family: 'hana';
 }
 
 .tape {
@@ -86,12 +94,11 @@ body {
 
 .edit_desc {
     width: 80%;
-    height: 1000px;
+    height: 500px;
     padding: 10px;
     resize: none;
     display: none;
-    font-size: 2em;
-    font-family: 'hana';
+    font-size: 1.7em;
 }
 
 .edit_desc:focus {
@@ -115,7 +122,6 @@ body {
     border: none;
     padding: 15px;
     font-weight: bold;
-    font-family: 'hana';
     font-size: 1.5em;
 }
 

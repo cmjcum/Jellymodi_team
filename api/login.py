@@ -6,8 +6,7 @@ import hashlib
 bp = Blueprint('login', __name__, url_prefix='/jelly')
 
 from pymongo import MongoClient
-client = MongoClient('localhost', 27017)
-db = client.dbsparta
+
 
 
 

@@ -3,7 +3,6 @@ import jinja2
 import jwt
 import datetime
 import hashlib
-
 import tensorflow as tf
 import cv2
 import numpy as np
@@ -19,8 +18,8 @@ import random
 os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3'
 
 from pymongo import MongoClient
-client = MongoClient('localhost', 27017)
-db = client.dbsparta
+
+
 
 bp = Blueprint('post', __name__, url_prefix='/post')
 
@@ -32,6 +31,7 @@ label = {'0': 'angry',
          '2': 'notbad',
          '3': 'sad'}
 
+jelly_url = None
 
 @bp.route('/')
 def post_page():
@@ -39,14 +39,13 @@ def post_page():
 
 @bp.route('/change', methods=['POST'])
 def change_pic_to_emoji():
+    global jelly_url
+
     face_img = request.files['face_img']
 
-    timestamp = datetime.datetime.utcnow().strftime('%Y%m%d%H%M%S%f')
+    path = save_img(face_img, './static/img/log/')
 
-    path = './static/img/log/' + timestamp + secure_filename(face_img.filename)
-    face_img.save(path)
     result = classify_emotion(detection_face(path))
-
     emotion = label[result]
 
     jelly_url = f'../static/img/jellyticon/{emotion}{random.randrange(1, 5)}.png'
@@ -75,6 +74,40 @@ def upload():
 
 
 
+
+    desc = request.form['desc']
+    additional_img = request.files['additional_img']
+    time = datetime.datetime.utcnow()
+
+    path = save_img(additional_img, './static/img/post/')
+
+    token_receive = request.cookies.get('mytoken')
+    try:
+        payload = jwt.decode(token_receive, SECRET_KEY, algorithms=['HS256'])
+
+        doc = {
+            'email': payload['email'],
+            'desc': desc,
+            'emoji': jelly_url,
+            'img': '.'+path,
+            'date': time
+        }
+
+        db.posts.insert_one(doc)
+
+        return jsonify({'msg': 'msg'})
+
+    except jwt.ExpiredSignatureError:
+        return redirect(url_for("login.login", msg="다시 로그인해주세요."))
+    except jwt.exceptions.DecodeError:
+        return redirect(url_for("login.login", msg="로그인 정보가 존재하지 않습니다."))
+
+
+def save_img(img, default_path):
+    timestamp = datetime.datetime.utcnow().strftime('%Y%m%d%H%M%S%f')
+    path = default_path + timestamp + secure_filename(img.filename)
+    img.save(path)
+    return path
 
 
 def detection_face(img_path):

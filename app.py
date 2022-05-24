@@ -9,14 +9,12 @@ from api import login, detail, post
 # Flask 객체 인스턴스 생성
 app = Flask(__name__)
 
-
 app.register_blueprint(login.bp)
 app.register_blueprint(detail.bp)
 app.register_blueprint(post.bp)
 
+
 from pymongo import MongoClient
-client = MongoClient('localhost', 27017)
-db = client.dbsparta
 
 
 @app.route('/')
@@ -26,7 +24,14 @@ def home():
         payload = jwt.decode(token_receive, SECRET_KEY, algorithms=['HS256'])
         user_info = db.user.find_one({"email": payload['email']})
 
-        posts = list(db.posts.find({"email": payload['email']}).sort('date', -1))
+        posts = list(db.posts.find({"email": payload['email']}))
+        for post in posts:
+            print('for')
+            post['Y-M'] = post['date'].strftime('%Y%m')
+            post['day'] = post['date'].strftime('%d')
+
+        posts.sort(key=lambda x: (-int(x['Y-M']), x['day']))
+
         temp = {}
         for post in posts:
             try:

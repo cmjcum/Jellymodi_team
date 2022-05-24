@@ -1,9 +1,20 @@
+/*@font-face {*/
+/*    font-family: 'busstop';*/
+/*    src: url('HYbusstop.ttf') format('truetype');*/
+/*}*/
+
+/** {*/
+/*    font-family: 'busstop';*/
+/*}*/
+
 @font-face {
     font-family: 'hana';
     src: url('nanum_hana.ttf') format('truetype');
 }
 
-* {font-family: 'hana';}
+* {
+    font-family: 'hana';
+}
 
 .floating_button {
     position: fixed;
@@ -125,28 +136,228 @@ footer {
 
 
 [data_tooltip]:hover {
-	position: relative;
+    position: relative;
 }
 
 [data_tooltip]:hover:after {
-	/*background-color: #ffdea2;*/
+    /*background-color: #ffdea2;*/
 
-	/*box-shadow: 5px 5px 5px 1px #000;*/
-	border-radius: 5px;
+    /*box-shadow: 5px 5px 5px 1px #000;*/
+    border-radius: 5px;
 
-	color: #ffb326;
-	font-size: 1.5em;
-	content: attr(data_tooltip);
+    color: #ffb326;
+    font-size: 1.5em;
+    content: attr(data_tooltip);
 
-  margin-bottom: 10px;
-	top: 80%;
-	left: 20%;
-	padding: 7px 12px;
-	position: absolute;
-	width: auto;
-	min-width: 50px;
-	max-width: 300px;
-	word-wrap: break-word;
+    margin-bottom: 10px;
+    top: 80%;
+    left: 20%;
+    padding: 7px 12px;
+    position: absolute;
+    width: auto;
+    min-width: 50px;
+    max-width: 300px;
+    word-wrap: break-word;
 
-	z-index: 9999;
+    z-index: 9999;
+}
+
+@media (max-width: 801px) {
+
+    section {
+        width: 90%;
+    }
+
+    article {
+        width: 90%;
+    }
+
+    .jelly_box {
+        padding: 20px 30px;
+    }
+
+    footer {
+        font-size: 0.9em;
+    }
+}/*@font-face {*/
+/*    font-family: 'busstop';*/
+/*    src: url('HYbusstop.ttf') format('truetype');*/
+/*}*/
+
+/** {*/
+/*    font-family: 'busstop';*/
+/*}*/
+
+@font-face {
+    font-family: 'hana';
+    src: url('nanum_hana.ttf') format('truetype');
+}
+
+* {
+    font-family: 'hana';
+}
+
+.floating_button {
+    position: fixed;
+    right: 20px;
+    top: 20px;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: #ffb326;
+    border: none;
+    background-image: url("../img/plus.png");
+    background-size: cover;
+    box-shadow: 0px 5px 21px 1px rgba(0, 0, 0, 0.14);
+}
+
+body {
+    background-color: #fcd19c;
+}
+
+h1 {
+    padding: 50px 0 30px 0;
+    font-weight: 600;
+    font-size: 50px;
+}
+
+h5 {
+    font-size: 25px;
+    font-weight: 400;
+    padding-left: 40px;
+    margin-bottom: -13px;
+}
+
+a {
+    text-decoration: none;
+    color: red;
+    cursor: pointer;
+}
+
+a:hover {
+    font-weight: 600;
+}
+
+a:active {
+    font-weight: 600;
+}
+
+a:visited {
+    text-decoration: none;
+}
+
+.deco {
+    box-shadow: inset 0 -20px #ffdea2;
+    line-height: 21px;
+}
+
+.small {
+    font-size: 0.8em;
+    font-weight: 100;
+}
+
+section {
+    width: 800px;
+    margin: 60px auto 20px auto;
+    padding-bottom: 20px;
+    border-radius: 10px;
+    background-color: #fff8f0;
+    box-shadow: 0px 11px 35px 2px rgba(0, 0, 0, 0.14);
+}
+
+header {
+    width: 100%;
+    text-align: center;
+}
+
+article {
+    width: 704px;
+    margin: auto;
+}
+
+.list {
+    margin-bottom: 40px;
+}
+
+.jelly_box {
+    margin: auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-content: center;
+    border: 2px dashed #ffb326;
+    border-radius: 10px;
+    /*box-shadow: 5px 5px 5px 1px #ffdea2;*/
+    padding: 20px 0;
+}
+
+.jelly_box .jelly {
+    width: 100px;
+    margin: 20px;
+}
+
+.jelly_box .jelly > img {
+    width: inherit;
+}
+
+
+footer {
+    font-size: 1.2em;
+    line-height: 0.5em;
+    text-align: center;
+    padding: 60px 0 30px 0;
+}
+
+
+/*
+	css-only-tooltip version 1.0.0
+	ⓒ 2015 AHN JAE-HA http://github.com/eu81273
+	MIT License
+*/
+
+
+[data_tooltip]:hover {
+    position: relative;
+}
+
+[data_tooltip]:hover:after {
+    /*background-color: #ffdea2;*/
+
+    /*box-shadow: 5px 5px 5px 1px #000;*/
+    border-radius: 5px;
+
+    color: #ffb326;
+    font-size: 1.5em;
+    content: attr(data_tooltip);
+
+    margin-bottom: 10px;
+    top: 80%;
+    left: 20%;
+    padding: 7px 12px;
+    position: absolute;
+    width: auto;
+    min-width: 50px;
+    max-width: 300px;
+    word-wrap: break-word;
+
+    z-index: 9999;
+}
+
+@media (max-width: 801px) {
+
+    section {
+        width: 90%;
+    }
+
+    article {
+        width: 90%;
+    }
+
+    .jelly_box {
+        padding: 20px 30px;
+    }
+
+    footer {
+        font-size: 0.9em;
+    }
 }

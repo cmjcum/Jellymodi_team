@@ -19,7 +19,10 @@
     <link rel="icon" href="{{ url_for('static', filename='/img/favicon.ico') }}" type="image/x-icon">
 
     <!--자바스크립트, 스타일시트 파일 불러오기-->
+    <script src="{{ url_for('static', filename='js/list.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/post.js') }}"></script>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/list.css') }}">
+
 
     <script>
         function logout() {
@@ -36,7 +39,7 @@
 <body>
 
 <a href="{{ url_for('post.post_page') }}">
-    <button class="floating_button"></button>
+    <button class="floating_button" type="button"></button>
 </a>
 
 <section>
