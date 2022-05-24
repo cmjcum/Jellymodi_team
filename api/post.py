@@ -20,7 +20,6 @@ os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3'
 from pymongo import MongoClient
 
 
-
 bp = Blueprint('post', __name__, url_prefix='/post')
 
 model = tf.keras.models.load_model('static/emotionModel.h5')
@@ -76,10 +75,13 @@ def upload():
 
 
     desc = request.form['desc']
-    additional_img = request.files['additional_img']
-    time = datetime.datetime.utcnow()
+    try:
+        additional_img = request.files['additional_img']
+        path = '.' + save_img(additional_img, './static/img/post/')
+    except:
+        path = ''
 
-    path = save_img(additional_img, './static/img/post/')
+    time = datetime.datetime.utcnow()
 
     token_receive = request.cookies.get('mytoken')
     try:
@@ -89,7 +91,7 @@ def upload():
             'email': payload['email'],
             'desc': desc,
             'emoji': jelly_url,
-            'img': '.'+path,
+            'img': path,
             'date': time
         }
 
