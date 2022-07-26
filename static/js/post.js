@@ -7,7 +7,7 @@ function show_image(obj) {
     let parent = $(obj).parent();
     if ($(obj).attr('id') == 'face_img') {
         let face_img = $('#face_img')[0].files[0];
-        console.log(face_img)
+
         let form_data = new FormData();
         form_data.append('face_img', face_img);
 

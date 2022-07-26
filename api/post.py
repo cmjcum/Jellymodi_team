@@ -16,6 +16,7 @@ client = MongoClient('mongodb+srv://test:sparta@cluster0.zjibj.mongodb.net/luste
 db = client.dbjellymodi
 SECRET_KEY = 'JELLY'
 
+
 bp = Blueprint('post', __name__, url_prefix='/post')
 
 model = tf.keras.models.load_model('static/emotionModel.h5')

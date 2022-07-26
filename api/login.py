@@ -11,7 +11,6 @@ db = client.dbjellymodi
 SECRET_KEY = 'JELLY'
 
 
-
 @bp.route('/signup')
 def signup():
     return render_template('signup.html')

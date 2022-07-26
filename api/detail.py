@@ -1,11 +1,9 @@
-from flask import render_template, Blueprint, url_for, request, jsonify
-from werkzeug.utils import redirect
+from flask import render_template, Blueprint, url_for, request, jsonify, redirect
 from bson.objectid import ObjectId
 from pymongo import MongoClient
 client = MongoClient('mongodb+srv://test:sparta@cluster0.zjibj.mongodb.net/luster0?retryWrites=true&w=majority')
 db = client.dbjellymodi
 SECRET_KEY = 'JELLY'
-
 
 
 bp = Blueprint('detail', __name__, url_prefix='/detail')

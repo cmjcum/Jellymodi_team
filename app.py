@@ -1,7 +1,6 @@
 from flask import Flask, render_template, request, redirect, url_for
 import jinja2
 import jwt
-import datetime
 
 from api import login, detail, post
 
@@ -26,7 +25,6 @@ def home():
 
         posts = list(db.posts.find({"email": payload['email']}))
         for post in posts:
-            print('for')
             post['Y-M'] = post['date'].strftime('%Y%m')
             post['day'] = post['date'].strftime('%d')
 
