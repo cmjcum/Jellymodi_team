@@ -14,7 +14,9 @@ app.register_blueprint(post.bp)
 
 
 from pymongo import MongoClient
-
+client = MongoClient('mongodb+srv://test:sparta@cluster0.zjibj.mongodb.net/luster0?retryWrites=true&w=majority')
+db = client.dbjellymodi
+SECRET_KEY = 'JELLY'
 
 @app.route('/')
 def home():

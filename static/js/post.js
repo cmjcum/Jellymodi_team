@@ -1,5 +1,3 @@
-<<<<<<< HEAD
-=======
 function show_image(obj) {
     let url = URL.createObjectURL(event.target.files[0]);
 
@@ -58,4 +56,4 @@ function submit() {
         }
     });
 }
->>>>>>> 65f1989929d38c74acb332d169af1a5b4b07ed65
+

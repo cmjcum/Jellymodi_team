@@ -12,7 +12,9 @@ import datetime, random, os
 os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3'
 
 from pymongo import MongoClient
-
+client = MongoClient('mongodb+srv://test:sparta@cluster0.zjibj.mongodb.net/luster0?retryWrites=true&w=majority')
+db = client.dbjellymodi
+SECRET_KEY = 'JELLY'
 
 bp = Blueprint('post', __name__, url_prefix='/post')
 
@@ -46,28 +48,8 @@ def change_pic_to_emoji():
     return jsonify({'url': jelly_url})
 
 
-
-
 @bp.route('/upload', methods=['POST'])
 def upload():
-
-    desc_receive = request.form['desc_give']
-    face_img_receive = request.form['face_img_give']
-
-    doc = {
-        'desc_receive': 'desc_receive',
-        'face_img_receive': 'face_img_receive'
-    }
-    db.users.insert_one(doc)
-
-    return jsonify({'msg': '저장 완료!'})
-
-
-
-
-
-
-
     desc = request.form['desc']
     try:
         additional_img = request.files['additional_img']

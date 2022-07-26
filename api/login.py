@@ -6,7 +6,9 @@ import hashlib
 bp = Blueprint('login', __name__, url_prefix='/jelly')
 
 from pymongo import MongoClient
-
+client = MongoClient('mongodb+srv://test:sparta@cluster0.zjibj.mongodb.net/luster0?retryWrites=true&w=majority')
+db = client.dbjellymodi
+SECRET_KEY = 'JELLY'
 
 
 
